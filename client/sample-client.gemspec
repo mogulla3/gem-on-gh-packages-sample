@@ -3,7 +3,7 @@
 =begin
 #Swagger Petstore
 
-#abcdefghij
+#abcdefghijk
 
 The version of the OpenAPI document: 1.0.0
 Contact: apiteam@swagger.io
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.email       = ["mogulla3@example.com"]
   s.homepage    = "https://github.com/mogulla3/gem-on-gh-packages-sample"
   s.summary     = "Swagger Petstore Ruby Gem"
-  s.description = "abcdefghij"
+  s.description = "abcdefghijk"
   s.license     = "Unlicense"
   s.required_ruby_version = ">= 2.7"
 
