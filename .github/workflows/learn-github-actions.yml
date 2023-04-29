@@ -19,8 +19,9 @@ jobs:
         continue-on-error: true
       - name: Create PullRequest (1)
         run: |
-          echo 'Create PullRequest on failure'
-          echo $GITHUB_SHA
+          echo "Create PullRequest on failure"
+          echo "$GITHUB_SHA"
+          echo "${{ github.sha }}"
         # if: steps.check_diff.outcome == 'failure'
         if: steps.check_diff.outcome == 'success'
       # - name: git diff
