@@ -21,6 +21,7 @@ jobs:
           bundler-cache: true
           working-directory: ./client
       - run: bundle install
+        working-directory: ./client
       - name: Upload gem
         run: |
           mkdir -p $HOME/.gem
