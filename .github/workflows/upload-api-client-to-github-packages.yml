@@ -6,7 +6,7 @@ on:
       - closed
 jobs:
   upload-api-client:
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, "api-client")
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'api-client')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
