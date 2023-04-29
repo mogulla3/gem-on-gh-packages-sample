@@ -15,8 +15,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+          working-directory: ./client
       - name: Build gem
-        # run: gem build sample-client.gemspec
         run: bundle exec rake build
         working-directory: ./client
       # - name: Upload gem
@@ -26,4 +26,5 @@ jobs:
                    # sample-client-0.0.1.gem
         # working-directory: ./client
 
+# run: gem build sample-client.gemspec
 # gem push --key github --host https://rubygems.pkg.github.com/mogulla3 pkg/sample-client-1.0.0.gem
