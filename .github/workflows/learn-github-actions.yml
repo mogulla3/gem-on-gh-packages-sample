@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Generate ruby-client
-        run: make generate-client
+      # - name: Generate ruby-client
+      #   run: make generate-client
       - name: Check diff
         id: check_diff
         run: git diff --quiet --exit-code
@@ -21,7 +21,8 @@ jobs:
         run: |
           echo 'Create PullRequest on failure'
           echo $GITHUB_SHA
-        if: steps.check_diff.outcome == 'failure'
+        # if: steps.check_diff.outcome == 'failure'
+        if: steps.check_diff.outcome == 'success'
       # - name: git diff
       #   # diffがない:exit_code=0, diffがある:exit_code=1
       #   run: git diff --quiet --exit-code
