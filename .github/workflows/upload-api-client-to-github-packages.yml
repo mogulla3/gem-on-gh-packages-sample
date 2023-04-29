@@ -25,7 +25,7 @@ jobs:
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
           chmod 0600 $HOME/.gem/credentials
-          echo -n "---\n:github: Bearer ${GH_TOKEN}" > $HOME/.gem/credentials
+          echo "---\n:github: Bearer ${GH_TOKEN}" > $HOME/.gem/credentials
           bundle exec rake build
           gem push --key github --host https://rubygems.pkg.github.com/mogulla3 pkg/*.gem
         env:
