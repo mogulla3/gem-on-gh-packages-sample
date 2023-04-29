@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "openapi3.yaml"
+      - 'openapi3.yaml'
 jobs:
   generate-api-client:
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git checkout -b $BRANCH_NAME
           git add .
-          git commit -m "Update api-client"
+          git commit -m 'Update api-client'
           git push origin $BRANCH_NAME
-          gh pr create -f -B "main" -l "api-client" -t "Update api-client" -b "Updated api-client to reflect this change: $GITHUB_SHA"
+          gh pr create -f -B 'main' -l 'api-client' -t 'Update api-client' -b 'Updated api-client to reflect this change: $GITHUB_SHA'
         if: steps.check_diff.outcome == 'failure'
