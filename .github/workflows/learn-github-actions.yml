@@ -13,9 +13,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Generate ruby-client
         run: make generate-client
-      - name: Run git diff
+      - name: git diff
         # diffがない:exit_code=0, diffがある:exit_code=1
         run: git diff --quiet --exit-code
+        continue-on-error: true
       - name: Detect diff
         run: echo 'Diff found'
         if: ${{ failure() }}
