@@ -17,7 +17,7 @@ jobs:
           if ! git diff --quiet; then
             echo 'diff found'
           else
-            ehoc 'diff not found'
+            echo 'diff not found'
           fi
       # - name: git diff
       #   # diffがない:exit_code=0, diffがある:exit_code=1
