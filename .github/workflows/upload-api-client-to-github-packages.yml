@@ -15,7 +15,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-        working-directory: ./client
+          working-directory: ./client
       - name: Build gem
         # run: gem build sample-client.gemspec
         run: bundle exec rake build
