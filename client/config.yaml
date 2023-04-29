@@ -2,4 +2,3 @@ gemAuthor: mogulla3
 gemAuthorEmail: mogulla3@example.com
 gemHomepage: https://github.com/mogulla3/gem-on-gh-packages-sample
 gemName: sample-client
-library: faraday
