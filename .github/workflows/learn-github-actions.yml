@@ -1,14 +1,18 @@
-name: learn-github-actions
+name: generate-petstore-client
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
     branches:
       - main
     # paths:
-    #   - 'README.md'
+    #   - 'openapi3.yaml'
 jobs:
-  check-bats-version:
+  generate-client:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: make generate-client
+      - name: Generate ruby-client
+        run: make generate-client
+      - name: Detect diff
+        run: git diff
+        if: ${{ ! git diff --quiet }}
