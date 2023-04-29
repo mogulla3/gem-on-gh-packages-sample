@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - 'openapi3.yaml'
+    paths:
+      - 'openapi3.yaml'
 jobs:
   generate-client:
     runs-on: ubuntu-latest
@@ -13,18 +13,16 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-      # - name: Generate ruby-client
-      #   run: make generate-client
+      - name: Generate ruby-client
+        run: make generate-client
       - name: Check diff
         id: check_diff
         run: git diff --quiet --exit-code
         continue-on-error: true
-      - name: Create PullRequest (1)
+      - name: Create PullRequest
         env:
           BRANCH_NAME: build-client-from-${{ github.sha }}
         run: |
-          echo "Create PullRequest on failure"
-          echo "test" >> README.md
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git checkout -b $BRANCH_NAME
@@ -32,16 +30,4 @@ jobs:
           git commit -m 'Generate client.'
           git push origin $BRANCH_NAME
           gh pr create -f -B "main" -t "Update client" -b "" -l "api-client"
-          # echo "$GITHUB_SHA"
-          # echo "$GITHUB_REF"
-          # echo "${{ github.sha }}"
-          # echo "${{ github.ref }}"
-        # if: steps.check_diff.outcome == 'failure'
-        if: steps.check_diff.outcome == 'success'
-      # - name: git diff
-      #   # diffがない:exit_code=0, diffがある:exit_code=1
-      #   run: git diff --quiet --exit-code
-      #   continue-on-error: true
-      # - name: Detect diff
-      #   run: echo 'Diff found'
-      #   if: ${{ failure() }}
+        if: steps.check_diff.outcome == 'failure'
