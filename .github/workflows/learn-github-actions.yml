@@ -21,7 +21,9 @@ jobs:
         run: |
           echo "Create PullRequest on failure"
           echo "$GITHUB_SHA"
+          echo "$GITHUB_REF"
           echo "${{ github.sha }}"
+          echo "${{ github.ref }}"
         # if: steps.check_diff.outcome == 'failure'
         if: steps.check_diff.outcome == 'success'
       # - name: git diff
