@@ -20,12 +20,6 @@ jobs:
       - name: Build gem
         run: bundle exec rake build
         working-directory: ./client
-      # - name: Upload gem
-        # run: |
-          # gem push --key github \
-                   # --host https://rubygems.pkg.github.com/mogulla3 \
-                   # sample-client-0.0.1.gem
-        # working-directory: ./client
-
-# run: gem build sample-client.gemspec
-# gem push --key github --host https://rubygems.pkg.github.com/mogulla3 pkg/sample-client-1.0.0.gem
+      - name: Upload gem
+        run: gem push --key github --host https://rubygems.pkg.github.com/mogulla3 pkg/sample-client-0.0.1.gem
+        working-directory: ./client
