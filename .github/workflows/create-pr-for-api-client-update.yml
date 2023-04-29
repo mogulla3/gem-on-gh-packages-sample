@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'openapi3.yaml'
+      - openapi3.yaml
 jobs:
-  generate-api-client:
+  create-pr:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -22,6 +22,7 @@ jobs:
       - name: Create PullRequest
         env:
           BRANCH_NAME: build-client-from-${{ github.sha }}
+        if: steps.check_diff.outcome == 'failure'
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
@@ -30,4 +31,3 @@ jobs:
           git commit -m 'Update api-client'
           git push origin $BRANCH_NAME
           gh pr create -f -B 'main' -l 'api-client' -t 'Update api-client' -b 'Updated api-client to reflect this change: $GITHUB_SHA'
-        if: steps.check_diff.outcome == 'failure'
