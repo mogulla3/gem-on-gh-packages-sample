@@ -31,7 +31,7 @@ jobs:
           git add .
           git commit -m 'Generate client.'
           git push origin $BRANCH_NAME
-          gh pr create -f -B "main" -t "Update client" -b "" -l "label"
+          gh pr create -f -B "main" -t "Update client" -b "" -l "api-client"
           # echo "$GITHUB_SHA"
           # echo "$GITHUB_REF"
           # echo "${{ github.sha }}"
