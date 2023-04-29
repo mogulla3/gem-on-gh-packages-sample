@@ -26,6 +26,7 @@ jobs:
           git checkout -b "build-client-from-${{ github.sha }}"
           git add .
           git commit -m 'Generate client.'
+          gh pr create -f -B "main" -t "Update client" -b "" -l "label"
           # echo "$GITHUB_SHA"
           # echo "$GITHUB_REF"
           # echo "${{ github.sha }}"
