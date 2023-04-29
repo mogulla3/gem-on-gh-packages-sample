@@ -20,9 +20,12 @@ jobs:
       - name: Create PullRequest (1)
         run: |
           echo "Create PullRequest on failure"
+          echo "test" >> README.md
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git checkout -b "build-client-from-${{ github.sha }}"
+          git add .
+          git commit -m 'Generate client.'
           # echo "$GITHUB_SHA"
           # echo "$GITHUB_REF"
           # echo "${{ github.sha }}"
