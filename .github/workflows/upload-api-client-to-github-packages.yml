@@ -1,0 +1,30 @@
+name: upload-api-client
+run-name: Upload api client to GitHub packages
+on:
+  pull_request:
+    types:
+      - closed
+jobs:
+  upload-api-client:
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, "api-client")
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+        working-directory: ./client
+      - name: Build gem
+        # run: gem build sample-client.gemspec
+        run: bundle exec rake build
+        working-directory: ./client
+      # - name: Upload gem
+        # run: |
+          # gem push --key github \
+                   # --host https://rubygems.pkg.github.com/mogulla3 \
+                   # sample-client-0.0.1.gem
+        # working-directory: ./client
+
+# gem push --key github --host https://rubygems.pkg.github.com/mogulla3 pkg/sample-client-1.0.0.gem
