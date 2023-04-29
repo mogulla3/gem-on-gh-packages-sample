@@ -1,6 +1,4 @@
 .gitignore
-.rspec
-.rubocop.yml
 Gemfile
 README.md
 Rakefile
@@ -20,11 +18,3 @@ lib/sample-client/models/pet.rb
 lib/sample-client/models/pet_all_of.rb
 lib/sample-client/version.rb
 sample-client.gemspec
-spec/api/default_api_spec.rb
-spec/api_client_spec.rb
-spec/configuration_spec.rb
-spec/models/error_spec.rb
-spec/models/new_pet_spec.rb
-spec/models/pet_all_of_spec.rb
-spec/models/pet_spec.rb
-spec/spec_helper.rb
