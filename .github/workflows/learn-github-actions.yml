@@ -17,9 +17,12 @@ jobs:
         id: check_diff
         run: git diff --quiet --exit-code
         continue-on-error: true
-      - name: Create PullRequest
-        run: echo 'Create PullRequest'
+      - name: Create PullRequest (1)
+        run: echo 'Create PullRequest on failure'
         if: steps.check_diff.outcome == 'failure'
+      - name: Create PullRequest (2)
+        run: echo 'Create PullRequest on success'
+        if: steps.check_diff.outcome == 'success'
       # - name: git diff
       #   # diffがない:exit_code=0, diffがある:exit_code=1
       #   run: git diff --quiet --exit-code
