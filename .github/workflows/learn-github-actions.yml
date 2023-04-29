@@ -20,15 +20,18 @@ jobs:
         run: git diff --quiet --exit-code
         continue-on-error: true
       - name: Create PullRequest (1)
+        env:
+          BRANCH_NAME: build-client-from-${{ github.sha }}
         run: |
           echo "Create PullRequest on failure"
           echo "test" >> README.md
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git checkout -b "build-client-from-${{ github.sha }}"
+          git checkout -b $BRANCH_NAME
           git add .
           git commit -m 'Generate client.'
-          gh pr create -f -B "main" -t "Update client" -b "" -l "label"
+          git push origin $BRANCH_NAME
+          # gh pr create -f -B "main" -t "Update client" -b "" -l "label"
           # echo "$GITHUB_SHA"
           # echo "$GITHUB_REF"
           # echo "${{ github.sha }}"
