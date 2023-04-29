@@ -27,8 +27,10 @@ Gem::Specification.new do |s|
   s.license     = "Unlicense"
   s.required_ruby_version = ">= 2.7"
 
-  s.add_runtime_dependency 'faraday', '>= 1.0.1', '< 3.0'
-  s.add_runtime_dependency 'faraday-multipart'
+  s.metadata["allowed_push_host"] = "https://rubygems.pkg.github.com/mogulla3"
+  s.metadata["github_repo"] = "ssh://github.com/mogulla3/gem-on-gh-packages-sample"
+
+  s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
 
   s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
 
